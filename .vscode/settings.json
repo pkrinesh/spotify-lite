@@ -4,5 +4,6 @@
 		"quickfix.biome": "explicit",
 		"source.organizeImports.biome": "explicit"
 	},
-	"editor.insertSpaces": false
+	"editor.insertSpaces": false,
+	"unocss.include": ["**/*.jsx", "**/*.tsx"]
 }
