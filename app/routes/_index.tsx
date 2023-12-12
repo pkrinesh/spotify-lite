@@ -1,56 +1,34 @@
-import type { MetaFunction } from '@remix-run/node'
-import { useLoaderData } from '@remix-run/react'
+import type { LoaderFunctionArgs } from '@remix-run/node'
+import { Form, useLoaderData } from '@remix-run/react'
 
-export const meta: MetaFunction = () => {
-	return [
-		{ title: 'New Remix App' },
-		{ name: 'description', content: 'Welcome to Remix!' },
-	]
-}
+import { spotifyStrategy } from '~/services/auth.server'
 
-export function loader() {
-	return {
-		success: 'ok',
-	}
+export async function loader({ request }: LoaderFunctionArgs) {
+	const sessionData = spotifyStrategy.getSession(request)
+	return sessionData
 }
 
 export default function Index() {
 	const data = useLoaderData<typeof loader>()
+	const user = data?.user
 
 	return (
-		<div
-			style={{ fontFamily: 'system-ui, sans-serif', lineHeight: '1.8' }}
-			className='min-h-screen flex justify-center items-center bg-gray-900'
-		>
-			<div>
-				<h1>Welcome to Remix</h1>
-				<h1>{data.success}</h1>
-				<ul>
-					<li>
-						<a
-							target='_blank'
-							href='https://remix.run/tutorials/blog'
-							rel='noreferrer'
-						>
-							15m Quickstart Blog Tutorial
-						</a>
-					</li>
-					<li>
-						<a
-							target='_blank'
-							href='https://remix.run/tutorials/jokes'
-							rel='noreferrer'
-						>
-							Deep Dive Jokes App Tutorial
-						</a>
-					</li>
-					<li>
-						<a target='_blank' href='https://remix.run/docs' rel='noreferrer'>
-							Remix Docs
-						</a>
-					</li>
-				</ul>
-			</div>
+		<div style={{ textAlign: 'center', padding: 20 }}>
+			<h2>Welcome to Remix!</h2>
+			<p>
+				<a href='https://docs.remix.run'>Check out the docs</a> to get started.
+			</p>
+			{user ? (
+				<>
+					<p>You are logged in as: {user?.email}</p>
+					<pre>{JSON.stringify(data, null, 2)}</pre>
+				</>
+			) : (
+				<p>You are not logged in yet!</p>
+			)}
+			<Form action={user ? '/logout' : '/auth/spotify'} method='GET'>
+				<button type='submit'>{user ? 'Logout' : 'Log in with Spotify'}</button>
+			</Form>
 		</div>
 	)
 }
