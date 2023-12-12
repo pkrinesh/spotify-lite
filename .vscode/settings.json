@@ -5,5 +5,6 @@
 		"source.organizeImports.biome": "explicit"
 	},
 	"editor.insertSpaces": false,
-	"unocss.include": ["**/*.jsx", "**/*.tsx"]
+	"unocss.include": ["**/*.jsx", "**/*.tsx"],
+	"typescript.tsdk": "node_modules\\typescript\\lib"
 }

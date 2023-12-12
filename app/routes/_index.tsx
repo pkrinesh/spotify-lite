@@ -1,7 +1,8 @@
 import type { LoaderFunctionArgs } from '@remix-run/node'
-import { Form, useLoaderData } from '@remix-run/react'
+import { Form, Link, useLoaderData } from '@remix-run/react'
 
 import { spotifyStrategy } from '~/services/auth.server'
+import { path } from '~/utils/types-routes'
 
 export async function loader({ request }: LoaderFunctionArgs) {
 	const sessionData = spotifyStrategy.getSession(request)
@@ -22,11 +23,15 @@ export default function Index() {
 				<>
 					<p>You are logged in as: {user?.email}</p>
 					<pre>{JSON.stringify(data, null, 2)}</pre>
+					<Link to={path('/user/:id', { id: '2' })}>Users</Link>
 				</>
 			) : (
 				<p>You are not logged in yet!</p>
 			)}
-			<Form action={user ? '/logout' : '/auth/spotify'} method='GET'>
+			<Form
+				action={user ? path('/logout') : path('/auth/spotify')}
+				method='GET'
+			>
 				<button type='submit'>{user ? 'Logout' : 'Log in with Spotify'}</button>
 			</Form>
 		</div>

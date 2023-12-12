@@ -1,1 +1,4 @@
-- [ ] add tailwind
+- [x] add tailwind/unocss
+- [x] typesafe route function custom
+- [x] spotify-auth
+- [ ] Fetch data from spotify apis
