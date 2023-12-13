@@ -1,4 +1,8 @@
 - [x] add tailwind/unocss
 - [x] typesafe route function custom
 - [x] spotify-auth
+- [x] remove unocss and add tailwind
 - [ ] Fetch data from spotify apis
+- [ ] finish working on home page
+  - [ ] button with gradient border and possible background blur on hover
+  - [ ] square background with hover effect

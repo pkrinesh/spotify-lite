@@ -6,8 +6,7 @@ import {
 	Scripts,
 	ScrollRestoration,
 } from '@remix-run/react'
-import '@unocss/reset/tailwind.css'
-import 'virtual:uno.css'
+import './index.css'
 
 export default function App() {
 	return (
