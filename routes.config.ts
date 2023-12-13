@@ -1,8 +1,8 @@
-export const routesConfig = [
-  "/auth/spotify",
-  "/auth/spotify/callback",
-  "/login",
-  "/logout",
-  "/user/:id",
-  "/"
-] as const;
+export const routesConfig = {
+  "routes/auth+/spotify": "/auth/spotify",
+  "routes/auth+/spotify.callback": "/auth/spotify/callback",
+  "routes/login": "/login",
+  "routes/logout": "/logout",
+  "routes/user.$id": "/user/:id",
+  "routes/_index": "/"
+} as const;

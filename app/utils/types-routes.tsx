@@ -9,8 +9,14 @@ type ParseUrlParams<Url> = Url extends `${infer Path}(${infer OptionalPath})`
 		  : // biome-ignore lint/complexity/noBannedTypes: <explanation>
 			  {}
 
+type ObjectVal<T> = T[keyof T]
+type ObjectKey<T> = keyof T
+
+export type RouteId = ObjectKey<typeof routesConfig>
+export type Route = ObjectVal<typeof routesConfig>
+
 export function path<
-	T extends (typeof routesConfig)[number],
+	T extends Route,
 	P extends {
 		params: ParseUrlParams<T>
 	},

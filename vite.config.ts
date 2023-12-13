@@ -1,5 +1,6 @@
-import { writeFileSync } from 'fs'
+import { writeFile } from 'node:fs/promises'
 import { unstable_vitePlugin as remix } from '@remix-run/dev'
+import { resolve } from 'pathe'
 import { RouteManifest, flatRoutes } from 'remix-flat-routes'
 import UnoCSS from 'unocss/vite'
 import { defineConfig } from 'vite'
@@ -10,7 +11,7 @@ export default defineConfig({
 		remix({
 			ignoredRouteFiles: ['**/*'],
 			routes: async (defineRoutes) => {
-				generateRoutes(flatRoutes('routes', defineRoutes))
+				await generateRoutes(flatRoutes('routes', defineRoutes))
 				return flatRoutes('routes', defineRoutes)
 			},
 		}),
@@ -19,7 +20,7 @@ export default defineConfig({
 	],
 })
 
-function generateRoutes(routesObject: RouteManifest) {
+async function generateRoutes(routesObject: RouteManifest) {
 	const routes = routesObject
 	const routesArray = Object.values(routes)
 
@@ -38,15 +39,20 @@ function generateRoutes(routesObject: RouteManifest) {
 		return `${parentPath}/${path ?? ''}`
 	}
 
-	const fullPathArray = routesArray.map((item) =>
-		buildFullPath(routes, item.id),
-	)
+	const routeObj: Record<string, string> = {}
+
+	routesArray.map((item) => {
+		const absPath = buildFullPath(routes, item.id)
+		routeObj[item.id] = absPath
+		return absPath
+	})
+
 	const content = `export const routesConfig = ${JSON.stringify(
-		fullPathArray,
+		routeObj,
 		null,
 		2,
 	)} as const;\n`
 
-	const filePath = 'routes.config.ts'
-	writeFileSync(filePath, content)
+	const filePath = resolve('./routes.config.ts')
+	await writeFile(filePath, content)
 }
