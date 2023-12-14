@@ -4,7 +4,5 @@
 		"quickfix.biome": "explicit",
 		"source.organizeImports.biome": "explicit"
 	},
-	"editor.insertSpaces": false,
-	"unocss.include": ["**/*.jsx", "**/*.tsx"],
-	"typescript.tsdk": "node_modules\\typescript\\lib"
+	"editor.insertSpaces": false
 }

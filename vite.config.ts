@@ -2,7 +2,6 @@ import { writeFile } from 'node:fs/promises'
 import { unstable_vitePlugin as remix } from '@remix-run/dev'
 import { resolve } from 'pathe'
 import { RouteManifest, flatRoutes } from 'remix-flat-routes'
-import UnoCSS from 'unocss/vite'
 import { defineConfig } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
@@ -16,7 +15,6 @@ export default defineConfig({
 			},
 		}),
 		tsconfigPaths(),
-		UnoCSS(),
 	],
 })
 
