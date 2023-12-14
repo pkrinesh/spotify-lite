@@ -2,6 +2,7 @@ import { writeFile } from 'node:fs/promises'
 import { unstable_vitePlugin as remix } from '@remix-run/dev'
 import { resolve } from 'pathe'
 import { RouteManifest, flatRoutes } from 'remix-flat-routes'
+import { cleanDoubleSlashes } from 'ufo'
 import UnoCSS from 'unocss/vite'
 import { defineConfig } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
@@ -36,14 +37,14 @@ async function generateRoutes(routesObject: RouteManifest) {
 		const parentPath =
 			parentId !== 'root' ? buildFullPath(routeObject, parentId ?? '') : ''
 
-		return `${parentPath}/${path ?? ''}`.replace(/\/+$/, '')
+		return cleanDoubleSlashes(`${parentPath}/${path ?? ''}`)
 	}
 
 	const routeObj: Record<string, string> = {}
 
 	routesArray.map((item) => {
 		const absPath = buildFullPath(routes, item.id)
-		routeObj[item.id] = absPath === '' ? '/' : absPath
+		routeObj[item.id] = absPath
 		return absPath
 	})
 

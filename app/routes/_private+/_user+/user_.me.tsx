@@ -23,9 +23,10 @@ export default function UserProfile() {
 
 	return (
 		<div className='min-h-screen flex justify-center items-center text-center'>
-			{/* <Link to={path('/user/profile')}>Profile</Link> */}
-			<p>{user?.email}</p>
-			<pre>{JSON.stringify(data, null, 2)}</pre>
+			<div>
+				<p>{user?.email}</p>
+				{/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
+			</div>
 		</div>
 	)
 }

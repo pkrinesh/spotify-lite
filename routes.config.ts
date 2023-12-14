@@ -5,6 +5,6 @@ export const routesConfig = {
   "routes/auth+/spotify.callback": "/auth/spotify/callback",
   "routes/_index": "/",
   "routes/_private+/_layout": "/",
-  "routes/_private+/user+/_layout": "/user",
-  "routes/_private+/user+/me": "/user/me"
+  "routes/_private+/_user+/user": "/user",
+  "routes/_private+/_user+/user_.me": "/user/me"
 } as const;
