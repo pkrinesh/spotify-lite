@@ -36,14 +36,14 @@ async function generateRoutes(routesObject: RouteManifest) {
 		const parentPath =
 			parentId !== 'root' ? buildFullPath(routeObject, parentId ?? '') : ''
 
-		return `${parentPath}/${path ?? ''}`
+		return `${parentPath}/${path ?? ''}`.replace(/\/+$/, '')
 	}
 
 	const routeObj: Record<string, string> = {}
 
 	routesArray.map((item) => {
 		const absPath = buildFullPath(routes, item.id)
-		routeObj[item.id] = absPath
+		routeObj[item.id] = absPath === '' ? '/' : absPath
 		return absPath
 	})
 

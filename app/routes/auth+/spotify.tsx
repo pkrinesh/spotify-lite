@@ -1,6 +1,6 @@
 import { redirect } from '@remix-run/node'
-import { path } from '~/utils/types-routes'
+import { path } from '~/utils/typed-routes'
 
 export function loader() {
-	return redirect(path('/login'))
+	return redirect(path('/auth/login'))
 }

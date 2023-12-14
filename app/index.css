@@ -1,0 +1,16 @@
+/* https://coolors.co/000200-ffffff-013306-000700-000000-000d00-012724 */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+--black: hsla(0, 0%, 0%, 1);
+--black-1: hsla(120, 100%, 0%, 1);
+--black-2: hsla(120, 100%, 1%, 1);
+--white: hsla(0, 0%, 100%, 1);
+--green: hsla(126, 96%, 10%, 1);
+--dark-green: hsla(175, 95%, 8%, 1);
+--night-green: hsla(120, 100%, 3%, 1);
+
+--gradient-tr: linear-gradient(45deg,var(--black), var(--black-2), var(--night-green));
+}
