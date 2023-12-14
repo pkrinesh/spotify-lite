@@ -1,7 +1,4 @@
 /* https://coolors.co/000200-ffffff-013306-000700-000000-000d00-012724 */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 :root{
 --black: hsla(0, 0%, 0%, 1);
