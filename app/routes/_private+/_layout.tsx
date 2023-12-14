@@ -1,13 +1,10 @@
-import { LoaderFunctionArgs, redirect } from '@remix-run/node'
+import { LoaderFunctionArgs } from '@remix-run/node'
 import { Outlet } from '@remix-run/react'
-import { spotifyStrategy } from '~/services/auth.server'
-import { path } from '~/utils/typed-routes'
+import { requireAuth } from '~/server/utils/auth.server'
 
 export async function loader({ request }: LoaderFunctionArgs) {
-	const sessionData = await spotifyStrategy.getSession(request)
-	if (!sessionData?.user) {
-		return redirect(path('/'))
-	}
+	await requireAuth(request)
+
 	return null
 }
 

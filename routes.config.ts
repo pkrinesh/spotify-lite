@@ -6,5 +6,5 @@ export const routesConfig = {
   "routes/_index": "/",
   "routes/_private+/_layout": "/",
   "routes/_private+/_user+/user": "/user",
-  "routes/_private+/_user+/user_.me": "/user/me"
+  "routes/_private+/_user+/user.me": "/user/me"
 } as const;

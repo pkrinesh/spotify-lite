@@ -1,5 +1,5 @@
 import { ActionFunctionArgs } from '@remix-run/node'
-import { authenticator } from '~/services/auth.server'
+import { authenticator } from '~/server/provider/spotify.server'
 
 export async function loader({ request }: ActionFunctionArgs) {
 	await authenticator.authenticate('spotify', request)

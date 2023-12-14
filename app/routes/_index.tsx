@@ -1,15 +1,15 @@
 import { type LoaderFunctionArgs, redirect } from '@remix-run/node'
 import { Form } from '@remix-run/react'
+import { getAuthSession } from '~/server/utils/auth.server'
 
-import { spotifyStrategy } from '~/services/auth.server'
 import { path } from '~/utils/typed-routes'
 
 export async function loader({ request }: LoaderFunctionArgs) {
-	const sessionData = await spotifyStrategy.getSession(request)
+	const sessionData = await getAuthSession(request)
 	if (sessionData?.user) {
 		return redirect(path('/user/me'))
 	}
-	return {}
+	return null
 }
 
 export default function Index() {
