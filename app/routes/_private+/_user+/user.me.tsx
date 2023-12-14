@@ -1,6 +1,6 @@
 import { LoaderFunctionArgs, json } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
-import { getMe } from '~/server/api/getMe.server'
+import { getMe } from '~/server/api/get-me.server'
 import { requireAuth } from '~/server/utils/auth.server'
 
 export async function loader({ request }: LoaderFunctionArgs) {

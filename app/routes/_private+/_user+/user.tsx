@@ -1,17 +1,83 @@
-import { Form, Outlet } from '@remix-run/react'
+import { LoaderFunctionArgs, redirect } from '@remix-run/node'
+import { Form, Link, NavLink, Outlet } from '@remix-run/react'
 import { path } from '~/utils/typed-routes'
 
-export async function loader() {
+export async function loader({ request }: LoaderFunctionArgs) {
+	if (request.url === 'http://localhost:5173/user') {
+		throw redirect(path('/user/me'))
+	}
 	return null
 }
 
 export default function User() {
 	return (
-		<div>
-			<Form action={path('/auth/logout')} method='GET'>
-				<button type='submit'>Logout</button>
-			</Form>
-			<Outlet />
+		<div
+			className='w-screen h-screen bg-app text-app
+									grid grid-cols-[1fr_12fr] justify-center overflow-hidden
+								'
+		>
+			<div className='mt4 flex flex-col justify-between items-center border-r border-base'>
+				<Link to={path('/')} className='i-logos-spotify-icon text-4xl' />
+				<div className='w-full flex flex-col text-center items-center'>
+					<NavLink
+						to={path('/user/me')}
+						className={({ isActive }) =>
+							`nav-link w-full py4 ${isActive ? 'nav-link-active' : ''}`
+						}
+					>
+						<p>Profile</p>
+					</NavLink>
+					<NavLink
+						to={path('/user/playlists')}
+						className={({ isActive }) =>
+							`nav-link w-full py4 ${isActive ? 'nav-link-active' : ''}`
+						}
+					>
+						Playlists
+					</NavLink>
+					<NavLink
+						to={path('/user/top-artists')}
+						className={({ isActive }) =>
+							`nav-link w-full py4 ${isActive ? 'nav-link-active' : ''}`
+						}
+					>
+						<p>Top Artists</p>
+					</NavLink>
+					<NavLink
+						to={path('/user/top-tracks')}
+						className={({ isActive }) =>
+							`nav-link w-full py4 ${isActive ? 'nav-link-active' : ''}`
+						}
+					>
+						Top Tracks
+					</NavLink>
+					<NavLink
+						to={path('/user/recent')}
+						className={({ isActive }) =>
+							`nav-link w-full py4 ${isActive ? 'nav-link-active' : ''}`
+						}
+					>
+						Recent
+					</NavLink>
+				</div>
+				<div className='w-full'>
+					<Form action={path('/auth/logout')} method='GET'>
+						<button
+							type='submit'
+							className='w-full py4 flex justify-center items-center gap-2 btn-brand
+													group hover:opacity-90 transition
+										'
+						>
+							<span className='i-lucide-log-out text-xl group-hover:scale-120 transition' />
+						</button>
+					</Form>
+				</div>
+			</div>
+			<div className='border-l overflow-auto border-base'>
+				<div className=''>
+					<Outlet />
+				</div>
+			</div>
 		</div>
 	)
 }

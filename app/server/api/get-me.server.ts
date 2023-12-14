@@ -1,6 +1,5 @@
-import { ofetch } from 'ofetch'
 import { z } from 'zod'
-import { getAuthToken } from '../utils/auth.server'
+import { apiClient } from './api-client'
 
 const MeSchema = z.object({
 	display_name: z.string(),
@@ -23,13 +22,5 @@ const MeSchema = z.object({
 type Me = z.infer<typeof MeSchema>
 
 export async function getMe(request: Request) {
-	const token = await getAuthToken(request)
-	const res = await ofetch<Me>('https://api.spotify.com/v1/me', {
-		headers: {
-			Authorization: `Bearer ${token}`,
-			'Content-Type': 'application/json',
-		},
-	})
-
-	return res
+	return await apiClient<Me>('me', request)
 }

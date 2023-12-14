@@ -49,6 +49,12 @@ devDependencies:
   '@biomejs/biome':
     specifier: 1.4.1
     version: 1.4.1
+  '@iconify-json/logos':
+    specifier: ^1.1.41
+    version: 1.1.41
+  '@iconify-json/lucide':
+    specifier: ^1.1.145
+    version: 1.1.145
   '@remix-run/dev':
     specifier: ^2.3.1
     version: 2.3.1(@remix-run/serve@2.3.1)(typescript@5.3.3)(vite@5.0.7)
@@ -1236,6 +1242,18 @@ packages:
 
   /@humanwhocodes/object-schema@2.0.1:
     resolution: {integrity: sha512-dvuCeX5fC9dXgJn9t+X5atfmgQAzUOWqS1254Gh0m6i8wKd10ebXkfNKiRK+1GWi/yTvvLDHpoxLr0xxxeslWw==}
+    dev: true
+
+  /@iconify-json/logos@1.1.41:
+    resolution: {integrity: sha512-nq69aemSNSxsPh6hDx6QHQBZca6vQzTg6fUXdo996IQe41TNueyJrQXjdhaZr0jaqGEforuSPGLB16SMSZ+T2A==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
+
+  /@iconify-json/lucide@1.1.145:
+    resolution: {integrity: sha512-sUBZyP7HjYZk0LhSHoj3R7QlGZszBHkoQeY1nB2ox6arJTfrX/30LarbhgMIxHWOBSUMv/KUJsRSZyY8yZtE+g==}
+    dependencies:
+      '@iconify/types': 2.0.0
     dev: true
 
   /@iconify/types@2.0.0:

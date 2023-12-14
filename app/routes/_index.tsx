@@ -9,6 +9,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
 	if (sessionData?.user) {
 		return redirect(path('/user/me'))
 	}
+
 	return null
 }
 
