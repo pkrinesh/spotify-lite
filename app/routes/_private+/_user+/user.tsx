@@ -3,6 +3,7 @@ import { Form, Link, NavLink, Outlet } from '@remix-run/react'
 import { path } from '~/utils/typed-routes'
 
 export async function loader({ request }: LoaderFunctionArgs) {
+	// 👇 I know we can do uses._index.tsx
 	if (request.url === 'http://localhost:5173/user') {
 		throw redirect(path('/user/me'))
 	}
@@ -13,11 +14,11 @@ export default function User() {
 	return (
 		<div
 			className='w-screen h-screen bg-app text-app
-									grid grid-cols-[1fr_12fr] justify-center overflow-hidden
+									grid grid-cols-[1fr_10fr] justify-center overflow-hidden
 								'
 		>
-			<div className='mt4 flex flex-col justify-between items-center border-r border-base'>
-				<Link to={path('/')} className='i-logos-spotify-icon text-4xl' />
+			<div className='flex flex-col justify-between items-center border-r border-base'>
+				<Link to={path('/')} className='i-logos-spotify-icon mt4 text-4xl' />
 				<div className='w-full flex flex-col text-center items-center'>
 					<NavLink
 						to={path('/user/me')}
@@ -61,7 +62,7 @@ export default function User() {
 					</NavLink>
 				</div>
 				<div className='w-full'>
-					<Form action={path('/auth/logout')} method='GET'>
+					<Form action={path('/auth/logout')} method='POST'>
 						<button
 							type='submit'
 							className='w-full py4 flex justify-center items-center gap-2 btn-brand
@@ -73,7 +74,7 @@ export default function User() {
 					</Form>
 				</div>
 			</div>
-			<div className='border-l overflow-auto border-base'>
+			<div className='overflow-auto border-base'>
 				<div className=''>
 					<Outlet />
 				</div>

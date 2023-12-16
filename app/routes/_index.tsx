@@ -22,7 +22,7 @@ export default function Index() {
 		>
 			<div className='text-white text-center'>
 				<h2>Welcome to Spotify-lite!</h2>
-				<Form action={path('/auth/spotify')} method='GET'>
+				<Form action={path('/auth/spotify')} method='POST'>
 					<button type='submit'>Log in with Spotify</button>
 				</Form>
 			</div>
