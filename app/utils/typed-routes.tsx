@@ -1,4 +1,4 @@
-import { routesConfig } from '../../routes.config'
+import { Route } from '../../routes.config'
 
 type ParseUrlParams<Url> = Url extends `${infer Path}(${infer OptionalPath})`
 	? ParseUrlParams<Path> & Partial<ParseUrlParams<OptionalPath>>
@@ -9,11 +9,11 @@ type ParseUrlParams<Url> = Url extends `${infer Path}(${infer OptionalPath})`
 		  : // biome-ignore lint/complexity/noBannedTypes: <explanation>
 			  {}
 
-type ObjectVal<T> = T[keyof T]
-type ObjectKey<T> = keyof T
+// type ObjectVal<T> = T[keyof T]
+// type ObjectKey<T> = keyof T
 
-export type RouteId = ObjectKey<typeof routesConfig>
-export type Route = ObjectVal<typeof routesConfig>
+// export type RouteId = ObjectKey<typeof routesConfig>
+// export type Route = ObjectVal<typeof routesConfig>
 
 export function path<
 	T extends Route,

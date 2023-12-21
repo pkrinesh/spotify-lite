@@ -12,3 +12,7 @@ export const routesConfig = {
   "routes/_private+/_user+/user.top-artists": "/user/top-artists",
   "routes/_private+/_user+/user.top-tracks": "/user/top-tracks"
 } as const;
+
+export type RouteId = "routes/auth+/login" | "routes/auth+/logout" | "routes/auth+/spotify" | "routes/auth+/spotify.callback" | "routes/_index" | "routes/_private+/_layout" | "routes/_private+/_user+/user" | "routes/_private+/_user+/user.me" | "routes/_private+/_user+/user.playlists" | "routes/_private+/_user+/user.recent" | "routes/_private+/_user+/user.top-artists" | "routes/_private+/_user+/user.top-tracks";
+
+export type Route = "/auth/login" | "/auth/logout" | "/auth/spotify" | "/auth/spotify/callback" | "/" | "/user" | "/user/me" | "/user/playlists" | "/user/recent" | "/user/top-artists" | "/user/top-tracks";

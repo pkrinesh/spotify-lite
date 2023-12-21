@@ -41,10 +41,14 @@ async function generateRoutes(routesObject: RouteManifest) {
 	}
 
 	const routeObj: Record<string, string> = {}
+	const routeIdSet = new Set<string>()
+	const routeValueSet = new Set<string>()
 
 	routesArray.map((item) => {
 		const absPath = buildFullPath(routes, item.id)
 		routeObj[item.id] = absPath
+		routeIdSet.add(JSON.stringify(item.id))
+		routeValueSet.add(JSON.stringify(absPath))
 		return absPath
 	})
 
@@ -52,8 +56,10 @@ async function generateRoutes(routesObject: RouteManifest) {
 		routeObj,
 		null,
 		2,
-	)} as const;\n`
+	)} as const;\n\n`
+	const routesId = `export type RouteId = ${[...routeIdSet].join(' | ')};\n\n`
+	const routesValue = `export type Route = ${[...routeValueSet].join(' | ')};\n`
 
 	const filePath = resolve('./routes.config.ts')
-	await writeFile(filePath, content)
+	await writeFile(filePath, content + routesId + routesValue)
 }
