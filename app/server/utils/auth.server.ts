@@ -1,9 +1,11 @@
 import { redirect } from '@remix-run/node'
-import { path, Route } from '~/utils/typed-routes'
+import { Route } from 'routes.config'
+import { path } from '~/utils/typed-routes'
 import { spotifyStrategy } from '../provider/spotify.server'
 
 export async function getAuthSession(request: Request) {
 	const authSession = await spotifyStrategy.getSession(request)
+
 	return authSession
 }
 

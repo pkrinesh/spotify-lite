@@ -13,11 +13,11 @@ export async function loader({ request }: LoaderFunctionArgs) {
 export default function User() {
 	return (
 		<div
-			className='w-screen h-screen bg-app text-app
+			className='w-screen h-screen bg-background text-foreground text-app
 									grid grid-cols-[1fr_10fr] justify-center overflow-hidden
 								'
 		>
-			<div className='flex flex-col justify-between items-center border-r border-base'>
+			<div className='flex flex-col justify-between items-center bg-card border-r border-base'>
 				<Link to={path('/')} className='i-logos-spotify-icon mt4 text-4xl' />
 				<div className='w-full flex flex-col text-center items-center'>
 					<NavLink

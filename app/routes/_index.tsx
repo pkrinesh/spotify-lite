@@ -20,11 +20,21 @@ export default function Index() {
 								bg-gradient-to-bl from-black to-70% to-[--night-green]
 							'
 		>
-			<div className='text-white text-center'>
-				<h2>Welcome to Spotify-lite!</h2>
+			<div className='text-white text-center h-xs flex flex-col items-center justify-between'>
+				<h2 className='text-3xl font-medium text-foreground/80'>
+					Welcome to Spotify-lite
+				</h2>
 				<Form action={path('/auth/spotify')} method='POST'>
-					<button type='submit'>Log in with Spotify</button>
+					<button
+						className='bg-primary text-primary-foreground font-medium w-[280px] py2 rounded-full
+												hover:opacity-60 transition
+											'
+						type='submit'
+					>
+						Log in with Spotify
+					</button>
 				</Form>
+				<div className='' />
 			</div>
 		</div>
 	)

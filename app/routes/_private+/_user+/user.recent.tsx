@@ -1,12 +1,13 @@
-import { LoaderFunctionArgs } from '@remix-run/node'
+import { LoaderFunctionArgs, json } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
 import { getRecent } from '~/server/api/get-recents'
 import { requireAuth } from '~/server/utils/auth.server'
 
 export async function loader({ request }: LoaderFunctionArgs) {
 	await requireAuth(request)
+
 	const data = await getRecent(request)
-	return data
+	return json(data)
 }
 
 export default function Component() {
