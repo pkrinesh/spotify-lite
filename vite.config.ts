@@ -58,7 +58,9 @@ async function generateRoutes(routesObject: RouteManifest) {
 		2,
 	)} as const;\n\n`
 	const routesId = `export type RouteId = ${[...routeIdSet].join(' | ')};\n\n`
-	const routesValue = `export type Route = ${[...routeValueSet].join(' | ')};\n`
+	const routesValue = `export type Route = ${[...routeValueSet].join(
+		' | ',
+	)} | (string & {});\n`
 
 	const filePath = resolve('./routes.config.ts')
 	await writeFile(filePath, content + routesId + routesValue)
