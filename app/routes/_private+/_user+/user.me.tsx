@@ -38,7 +38,6 @@ export default function UserProfile() {
 				Load Data
 			</button>
 			<Link
-				// to={path('/user/:id', { id: '2', cursor: 'this' })}
 				to='/user/:id'
 				params={{ id: '4' }}
 				query={{ foo: 'bar' }}
