@@ -2,7 +2,7 @@ import { type LoaderFunctionArgs, redirect } from '@remix-run/node'
 import { Form } from '@remix-run/react'
 import { getAuthSession } from '~/server/utils/auth.server'
 
-import { path } from '~/utils/typed-routes'
+import { path } from '~/utils/typed-remix'
 
 export async function loader({ request }: LoaderFunctionArgs) {
 	const sessionData = await getAuthSession(request)

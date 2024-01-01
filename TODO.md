@@ -1,9 +1,10 @@
 - [x] add tailwind/unocss
-- [x] typesafe route function custom
+- [x] type-safe route function custom
 - [x] spotify-auth
 - [x] remove unocss and add tailwind
 - [x] use ufo from unjs for cleaning path in generateRoutes function
 - [x] Fetch data from spotify apis
+- [x] type-safe route utils (`Link`, `NavLink`, `path`)
 - [ ] finish working on home page
   - [ ] button with gradient border and possible background blur on hover
   - [ ] square background with hover effect

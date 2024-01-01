@@ -1,6 +1,6 @@
 import { LoaderFunctionArgs, redirect } from '@remix-run/node'
-import { Form, Link, NavLink, Outlet } from '@remix-run/react'
-import { path } from '~/utils/typed-routes'
+import { Form, Outlet } from '@remix-run/react'
+import { path, Link, NavLink } from '~/utils/typed-remix'
 
 export async function loader({ request }: LoaderFunctionArgs) {
 	// 👇 I know we can do uses._index.tsx
@@ -18,10 +18,10 @@ export default function User() {
 								'
 		>
 			<div className='flex flex-col justify-between items-center bg-card border-r border-base'>
-				<Link to={path('/')} className='i-logos-spotify-icon mt4 text-4xl' />
+				<Link to='/' className='i-logos-spotify-icon mt4 text-4xl' />
 				<div className='w-full flex flex-col text-center items-center'>
 					<NavLink
-						to={path('/user/me')}
+						to='/user/me'
 						className={({ isActive }) =>
 							`nav-link w-full py4 ${isActive ? 'nav-link-active' : ''}`
 						}
@@ -29,7 +29,7 @@ export default function User() {
 						<p>Profile</p>
 					</NavLink>
 					<NavLink
-						to={path('/user/playlists')}
+						to='/user/playlists'
 						className={({ isActive }) =>
 							`nav-link w-full py4 ${isActive ? 'nav-link-active' : ''}`
 						}
@@ -37,7 +37,7 @@ export default function User() {
 						Playlists
 					</NavLink>
 					<NavLink
-						to={path('/user/top-artists')}
+						to='/user/top-artists'
 						className={({ isActive }) =>
 							`nav-link w-full py4 ${isActive ? 'nav-link-active' : ''}`
 						}
@@ -45,7 +45,7 @@ export default function User() {
 						<p>Top Artists</p>
 					</NavLink>
 					<NavLink
-						to={path('/user/top-tracks')}
+						to='/user/top-tracks'
 						className={({ isActive }) =>
 							`nav-link w-full py4 ${isActive ? 'nav-link-active' : ''}`
 						}
@@ -53,7 +53,7 @@ export default function User() {
 						Top Tracks
 					</NavLink>
 					<NavLink
-						to={path('/user/recent')}
+						to='/user/recent'
 						className={({ isActive }) =>
 							`nav-link w-full py4 ${isActive ? 'nav-link-active' : ''}`
 						}
@@ -61,6 +61,7 @@ export default function User() {
 						Recent
 					</NavLink>
 				</div>
+
 				<div className='w-full'>
 					<Form action={path('/auth/logout')} method='POST'>
 						<button

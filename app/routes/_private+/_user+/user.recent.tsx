@@ -9,7 +9,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
 	const url = request.url
 	const search = getQuery(url)
 	// const search = new URL(request.url)
-	// console.log(url, search)
+	console.log(url, search)
 
 	const data = await getRecent(request)
 	return json(data)

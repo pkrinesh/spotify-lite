@@ -1,5 +1,5 @@
 import { withQuery } from 'ufo'
-import { Route } from '../../routes.config'
+import { Route } from '../../../routes.config'
 
 export type ParseUrlParams<Url> =
 	Url extends `${infer Path}(${infer OptionalPath})`

@@ -24,9 +24,9 @@ export type LinkProps<T extends Route> = ParseUrlParams<T> extends Record<
 type LinkComponent = <T extends Route>(props: LinkProps<T>) => ReactNode
 
 const Link: LinkComponent = React.forwardRef(
-	({ to, params, query, ...props }: any, ref) => {
+	({ to, params, query, ...rest }: any, ref) => {
 		return (
-			<RemixLink to={path(to, { ...params, ...query })} {...props} ref={ref} />
+			<RemixLink to={path(to, { ...params, ...query })} {...rest} ref={ref} />
 		)
 	},
 )

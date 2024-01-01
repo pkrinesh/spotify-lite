@@ -3,12 +3,7 @@ import { useFetcher, useLoaderData } from '@remix-run/react'
 import { getMe } from '~/server/api/get-me.server'
 import { getRecent } from '~/server/api/get-recents'
 import { requireAuth } from '~/server/utils/auth.server'
-import { Link } from '~/utils/link'
-import { path } from '~/utils/typed-routes'
-
-export const schema = {
-	foo: 'string',
-}
+import { path, Link } from '~/utils/typed-remix'
 
 export async function loader({ request }: LoaderFunctionArgs) {
 	await requireAuth(request)
