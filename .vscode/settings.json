@@ -5,7 +5,7 @@
 		"source.organizeImports.biome": "explicit"
 	},
 	"editor.insertSpaces": false,
-	"cSpell.words": ["lucide"],
+	"cSpell.words": ["clsx", "lucide"],
 	"[css]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
